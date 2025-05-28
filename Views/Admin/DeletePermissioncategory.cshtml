@@ -1,0 +1,20 @@
+﻿@model category
+<div class="container-fluid px-4">
+    <anth2 class="mt-4 text-center text-uppercase text-danger" style="letter-spacing:4px">Are You Sure You Want to Delete This category </h2>
+</div>
+<div class="row">
+    <div class="col-md-8">
+
+        <ul class="list-group">
+            <li class="list-group-item">Category ID : @Model.category_Id</li>
+            <li class="list-group-item">Category Name : @Model.category_Name</li>
+            
+
+        </ul>
+        <a href="@Url.Action("DeleteCategory", "Admin", new { Id = Model.category_Id })" class="btn btn-danger">Delete Category</a>
+
+        <a href="@Url.Action("fetchcategory", "Admin", new { Id = Model.category_Id })" class="btn btn-danger">Back To list</a>
+
+    </div>x
+
+</div>

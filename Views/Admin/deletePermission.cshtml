@@ -1,0 +1,27 @@
+﻿
+
+<div class="container-fluid px-4">
+    <anth2 class="mt-4 text-center text-uppercase text-danger" style="letter-spacing:4px">Are You Sure You Want to Delete Customer </h2>
+</div>
+<div class="row">
+    <div class="col-md-8">
+    
+        <ul class="list-group">
+            <li class="list-group-item">Customer ID : @Model.customer_Id</li>
+            <li class="list-group-item">Customer Name : @Model.customer_name</li>
+            <li class="list-group-item">Customer Phone : @Model.customer_phone</li>
+            <li class="list-group-item">Customer Email : @Model.customer_eamil</li>
+            <li class="list-group-item">Customer Password : @Model.customer_password</li>
+            <li class="list-group-item">Customer Gender : @Model.customer_gender</li>
+            <li class="list-group-item">Customer Country : @Model.customer_country</li>
+            <li class="list-group-item">Customer City : @Model.customer_city</li>
+            <li class="list-group-item">Customer Address : @Model.customer_address</li>
+
+        </ul>
+        <a href="@Url.Action("DeleteCustomer", "Admin" , new {Id=Model.customer_Id} )" class="btn btn-danger">Delete Customer</a>
+
+        <a href="@Url.Action("DeleteCustomer", "Admin", new { Id = Model.customer_Id })" class="btn btn-danger">Delete Customer</a>
+
+    </div>x
+
+</div>

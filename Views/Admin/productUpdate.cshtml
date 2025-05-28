@@ -1,0 +1,36 @@
+﻿@model product
+
+<div class="container-fluid px-4">
+    <h2 class="mt-4 text-center text-uppercase" style="letter-spacing:4px">Update Product</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="product_Id" value="@Model.product_Id" />
+
+            <input type="text" placeholder="Enter Product Name" name="product_name"
+                   class="form-control my-3" value="@Model.product_name" />
+
+            <input type="text" placeholder="Enter Product Price" name="product_price"
+                   class="form-control my-3" value="@Model.product_price" />
+
+            <input type="text" placeholder="Enter Product Description" name="product_description"
+                   class="form-control my-3" value="@Model.product_description" />
+
+            <!-- Modified Category Dropdown without semicolon -->
+            <select class="form-select my-3" name="cat_id">
+                <option value="" selected disabled>Select Any Category</option>
+                @foreach (var cat in (List<category>)ViewData["category"])
+                {
+                    <option value="@cat.category_Id">@cat.category_Name</option>
+                }
+            </select>
+
+            <input type="file" name="product_image" class="form-control my-3" />
+            <input type="submit" value="Update Product" class="form-control my-3 btn btn-primary" />
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>

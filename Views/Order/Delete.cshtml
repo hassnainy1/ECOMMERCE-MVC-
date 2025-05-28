@@ -1,0 +1,24 @@
+﻿@model E_commerce_Website.Models.Order
+
+<div class="container-fluid px-4">
+    <h2 class="mt-4 text-center text-uppercase text-danger" style="letter-spacing:4px">
+        Are You Sure You Want to Delete This Order?
+    </h2>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <ul class="list-group">
+            <li class="list-group-item">Order ID : @Model.Id</li>
+          
+            <li class="list-group-item">Order Status : @Model.Status</li>
+        </ul>
+
+        <!-- Delete permission confirmation -->
+        <a href="@Url.Action("DeleteConfirmed", "Order", new { id = Model.Id })" class="btn btn-danger mt-3">
+            Confirm Deletion
+        </a>
+
+        <a href="@Url.Action("Index", "Order")" class="btn btn-secondary mt-3">Cancel</a>
+    </div>
+</div>

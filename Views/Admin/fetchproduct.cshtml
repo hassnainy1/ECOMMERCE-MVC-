@@ -1,0 +1,47 @@
+﻿@model List<product>
+
+<div class="container-fluid px-4">
+    <h2 class="mt-4 text-center text-uppercase" style="letter-spacing:4px">All Products</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="@Url.Action("addproduct", "Admin")" class="btn btn-primary mb-2">Add New Product</a>
+        <table class="table table-bordered table-striped text-center mt-2">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pro in Model)
+                {
+                    <tr>
+                        <td>@pro.product_name</td>
+                        <td>@pro.product_price.ToString()</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(pro.product_image))
+                            {
+                                <img src="~/product_images/@pro.product_image" alt="Product Image" width="60" height="60" class="img-thumbnail" />
+                            }
+                            else
+                            {
+                                <span class="text-muted">No Image</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a href="@Url.Action("productDetails", "Admin", new { id = pro.product_Id })" class="btn btn-info btn-sm">Details</a>
+                                <a href="@Url.Action("productUpdate", "Admin", new { id = pro.product_Id })" class="btn btn-warning btn-sm">Update</a>
+                                <a href="@Url.Action("DeletePermissionproduct", "Admin", new { id = pro.product_Id })" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

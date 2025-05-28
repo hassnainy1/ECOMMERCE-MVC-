@@ -1,0 +1,20 @@
+﻿@model product
+<div class="container-fluid px-4">
+    <anth2 class="mt-4 text-center text-uppercase text-danger" style="letter-spacing:4px">Are You Sure You Want to Delete This product </h2>
+</div>
+<div class="row">
+    <div class="col-md-8">
+
+        <ul class="list-group">
+            <li class="list-group-item">Product ID : @Model.product_Id</li>
+            <li class="list-group-item">Product Name : @Model.product_name</li>
+
+
+        </ul>
+        <a href="@Url.Action("deleteproduct", "Admin", new { Id = Model.product_Id })" class="btn btn-danger">Delete Product</a>
+
+        <a href="@Url.Action("fetchproduct", "Admin", new { Id = Model.product_Id })" class="btn btn-danger">Back To list</a>
+
+    </div>x
+
+</div>
