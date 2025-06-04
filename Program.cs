@@ -1,5 +1,6 @@
 using E_commerce_Website.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<myContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("myconnection")));
+
+// Add Swagger support
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ecommerce API", Version = "v1" });
+});
 
 builder.Services.AddSession(options =>
 {
@@ -30,7 +37,18 @@ app.UseRouting();
 app.UseSession();
 app.UseAuthorization();
 
-// Route configuration for Order controller
+// Use Swagger in Development Environment
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecommerce API V1");
+        c.RoutePrefix = string.Empty;  // To serve Swagger UI at the root
+    });
+}
+
+// Route configuration for controllers
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Order}/{action=Orders}/{id?}");  // Default route to Order/Orders
@@ -47,4 +65,3 @@ app.MapControllerRoute(
 app.MapRazorPages();  // Add this line for Razor Pages
 
 app.Run();
-
